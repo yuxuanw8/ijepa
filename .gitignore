@@ -1,3 +1,4 @@
 *.swp
 *.swo
 __pycache__
+pre-training_weights/

@@ -376,6 +376,9 @@ class VisionTransformer(nn.Module):
         self.init_std = init_std
         self.apply(self._init_weights)
         self.fix_init_weight()
+        
+        # modification
+        self.fc = nn.Linear(embed_dim, 1000)
 
     def fix_init_weight(self):
         def rescale(param, layer_id):
@@ -421,6 +424,12 @@ class VisionTransformer(nn.Module):
 
         if self.norm is not None:
             x = self.norm(x)
+
+        # modification
+        # average-pooled 
+        x = x[:,1:].mean(dim=1)
+        # linear head
+        x = self.fc(x)
 
         return x
 

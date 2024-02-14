@@ -2,3 +2,5 @@
 *.swo
 __pycache__
 pre-training_weights/
+./finetune/finetune_playground.py
+launch_finetune.sh
